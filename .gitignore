@@ -18,9 +18,6 @@ Thumbs.db
 data/HIGGS.csv.gz
 data/*.csv
 splits/
-models/
-*.pkl
-*.joblib
 
 # Outputs allowed (small CSVs / figures), but ignore scratch
 outputs/scratch/
