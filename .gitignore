@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Data & large artifacts
+data/HIGGS.csv.gz
+data/*.csv
+splits/
+models/
+*.pkl
+*.joblib
+
+# Outputs allowed (small CSVs / figures), but ignore scratch
+outputs/scratch/
+figures/scratch/
+
+# Report working files
+report/*.docx
+report/*.aux
+report/*.log
