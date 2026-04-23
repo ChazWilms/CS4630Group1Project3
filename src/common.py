@@ -69,16 +69,34 @@ def compute_metrics(y_true, y_pred, y_proba):
 
 NEEDS_SCALING = {"linear_svm", "rbf_svm", "knn"}
 
+# Pre-selected RBF-SVM params from 20k pilot run, keyed by feature set.
+# Used by step2e_rbf_full.py to train on the full 160k without a 27-hour grid.
+RBF_FULL_PARAMS = {
+    "raw": {"C": 10.0, "gamma": 0.01},
+    "pca": {"C": 1.0, "gamma": "scale"},
+    "clusters": {"C": 10.0, "gamma": 0.01},
+}
 
-def get_models():
+
+def get_models(rbf_full_params=None):
+    """Return model registry.
+
+    If rbf_full_params is provided (dict like {"C": 10.0, "gamma": 0.01}),
+    the RBF-SVM grid collapses to a single cell so we can train on full data.
+    """
+    if rbf_full_params is not None:
+        rbf_grid = {k: [v] for k, v in rbf_full_params.items()}
+    else:
+        rbf_grid = {"C": [0.1, 1.0, 10.0], "gamma": ["scale", 0.01, 0.1]}
+
     models = {
         "linear_svm": (
             LinearSVC(dual="auto", max_iter=5000, random_state=42),
             {"C": [0.1, 1.0, 10.0]},
         ),
         "rbf_svm": (
-            SVC(kernel="rbf", probability=True, random_state=42),
-            {"C": [0.1, 1.0, 10.0], "gamma": ["scale", 0.01, 0.1]},
+            SVC(kernel="rbf", probability=True, random_state=42, cache_size=4000),
+            rbf_grid,
         ),
         "knn": (
             KNeighborsClassifier(n_jobs=-1),
