@@ -38,10 +38,8 @@ CS4630Group1Project3/
 ├── data/                        # Raw + Project 2 artifacts
 ├── src/                         # Pipeline source code
 ├── splits/                      # Train/test splits
-├── models/                      # Trained model files 
 ├── outputs/                     # Metrics CSVs
 ├── figures/                     # Plots for the report
-├── report/                      # Report drafts and final PDF
 ├── .gitignore
 ├── requirements.txt
 └── README.md
