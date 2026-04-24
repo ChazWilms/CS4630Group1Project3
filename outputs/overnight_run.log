@@ -1,0 +1,84 @@
+=== 2026-04-23 15:48:21: START xgboost (step2d) ===
+=== Feature set: raw ===
+X_train: (160000, 28)  X_test: (40000, 28)
+
+--- xgboost ---
+[xgboost fit] 35.13s
+[xgboost predict] 0.05s
+best={'learning_rate': 0.05, 'max_depth': 8, 'n_estimators': 400}  test ROC-AUC=0.8175
+
+Appended 1 rows to /Users/chaz/Desktop/CS4630Group1Project3/outputs/results_raw.csv (dropped: ['gradient_boosting', 'xgboost'])
+=== Feature set: pca ===
+X_train: (160000, 10)  X_test: (40000, 10)
+
+--- xgboost ---
+[xgboost fit] 22.88s
+[xgboost predict] 0.05s
+best={'learning_rate': 0.05, 'max_depth': 8, 'n_estimators': 400}  test ROC-AUC=0.6855
+
+Appended 1 rows to /Users/chaz/Desktop/CS4630Group1Project3/outputs/results_pca.csv (dropped: ['gradient_boosting', 'xgboost'])
+=== Feature set: clusters ===
+X_train: (160000, 29)  X_test: (40000, 29)
+
+--- xgboost ---
+[xgboost fit] 36.47s
+[xgboost predict] 0.06s
+best={'learning_rate': 0.05, 'max_depth': 8, 'n_estimators': 400}  test ROC-AUC=0.8166
+
+Appended 1 rows to /Users/chaz/Desktop/CS4630Group1Project3/outputs/results_clusters.csv (dropped: ['gradient_boosting', 'xgboost'])
+=== 2026-04-23 15:49:57: DONE xgboost ===
+=== 2026-04-23 15:49:57: START rbf full 160k (step2e) ===
+=== Feature set: raw ===
+X_train: (160000, 28)  X_test: (40000, 28)
+[rbf_full] pre-selected params: {'C': 10.0, 'gamma': 0.01}
+
+--- rbf_svm ---
+  [rbf_svm] training on full 160,000 rows
+[rbf_svm fit] 7582.53s
+[rbf_svm predict] 197.42s
+best={'C': 10.0, 'gamma': 0.01}  test ROC-AUC=0.7701
+
+Appended 1 rows to /Users/chaz/Desktop/CS4630Group1Project3/outputs/results_raw.csv (dropped: ['rbf_svm'])
+=== Feature set: pca ===
+X_train: (160000, 10)  X_test: (40000, 10)
+[rbf_full] pre-selected params: {'C': 1.0, 'gamma': 'scale'}
+
+--- rbf_svm ---
+  [rbf_svm] training on full 160,000 rows
+[rbf_svm fit] 3537.22s
+[rbf_svm predict] 198.51s
+best={'C': 1.0, 'gamma': 'scale'}  test ROC-AUC=0.6759
+
+Appended 1 rows to /Users/chaz/Desktop/CS4630Group1Project3/outputs/results_pca.csv (dropped: ['rbf_svm'])
+=== Feature set: clusters ===
+X_train: (160000, 29)  X_test: (40000, 29)
+[rbf_full] pre-selected params: {'C': 10.0, 'gamma': 0.01}
+
+--- rbf_svm ---
+  [rbf_svm] training on full 160,000 rows
+[rbf_svm fit] 8153.16s
+[rbf_svm predict] 227.10s
+best={'C': 10.0, 'gamma': 0.01}  test ROC-AUC=0.7708
+
+Appended 1 rows to /Users/chaz/Desktop/CS4630Group1Project3/outputs/results_clusters.csv (dropped: ['rbf_svm'])
+=== 2026-04-23 21:21:34: DONE rbf full ===
+=== 2026-04-23 21:21:34: aggregating results (step3) ===
+Wrote /Users/chaz/Desktop/CS4630Group1Project3/outputs/final_comparison.csv
+
+ROC-AUC by model x feature set:
+feature_set    clusters     pca     raw
+model                                  
+decision_tree    0.7634  0.6400  0.7634
+knn              0.7156  0.6595  0.7155
+linear_svm       0.6860  0.5646  0.6823
+random_forest    0.8044  0.6873  0.8052
+rbf_svm          0.7708  0.6759  0.7701
+xgboost          0.8166  0.6855  0.8175
+=== 2026-04-23 21:21:35: plotting (step4) ===
+wrote /Users/chaz/Desktop/CS4630Group1Project3/figures/roc_auc_comparison.png
+wrote /Users/chaz/Desktop/CS4630Group1Project3/figures/pr_auc_comparison.png
+wrote /Users/chaz/Desktop/CS4630Group1Project3/figures/accuracy_comparison.png
+wrote /Users/chaz/Desktop/CS4630Group1Project3/figures/f1_comparison.png
+wrote /Users/chaz/Desktop/CS4630Group1Project3/figures/train_time_comparison.png
+wrote /Users/chaz/Desktop/CS4630Group1Project3/figures/inference_time_comparison.png
+=== 2026-04-23 21:21:37: ALL DONE ===

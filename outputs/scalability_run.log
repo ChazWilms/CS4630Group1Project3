@@ -1,0 +1,246 @@
+=== 2026-04-23 23:12:50: START step5 scalability ===
+Feature set: raw
+X_train: (160000, 28)  X_test: (40000, 28)
+
+--- linear_svm @ n=1,000 ---
+[linear_svm fit] 0.00s
+[linear_svm predict] 0.00s
+  ROC-AUC=0.6650  train=0.00s
+
+--- linear_svm @ n=2,000 ---
+[linear_svm fit] 0.00s
+[linear_svm predict] 0.00s
+  ROC-AUC=0.6771  train=0.00s
+
+--- linear_svm @ n=5,000 ---
+[linear_svm fit] 0.01s
+[linear_svm predict] 0.00s
+  ROC-AUC=0.6735  train=0.01s
+
+--- linear_svm @ n=10,000 ---
+[linear_svm fit] 0.01s
+[linear_svm predict] 0.00s
+  ROC-AUC=0.6781  train=0.01s
+
+--- linear_svm @ n=20,000 ---
+[linear_svm fit] 0.03s
+[linear_svm predict] 0.00s
+  ROC-AUC=0.6816  train=0.03s
+
+--- linear_svm @ n=40,000 ---
+[linear_svm fit] 0.05s
+[linear_svm predict] 0.00s
+  ROC-AUC=0.6822  train=0.05s
+
+--- linear_svm @ n=80,000 ---
+[linear_svm fit] 0.12s
+[linear_svm predict] 0.00s
+  ROC-AUC=0.6824  train=0.12s
+
+--- linear_svm @ n=160,000 ---
+[linear_svm fit] 0.22s
+[linear_svm predict] 0.00s
+  ROC-AUC=0.6823  train=0.22s
+
+--- rbf_svm @ n=1,000 ---
+[rbf_svm fit] 0.07s
+[rbf_svm predict] 1.43s
+  ROC-AUC=0.6455  train=0.07s
+
+--- rbf_svm @ n=2,000 ---
+[rbf_svm fit] 0.27s
+[rbf_svm predict] 2.72s
+  ROC-AUC=0.6705  train=0.27s
+
+--- rbf_svm @ n=5,000 ---
+[rbf_svm fit] 1.78s
+[rbf_svm predict] 6.38s
+  ROC-AUC=0.7093  train=1.78s
+
+--- rbf_svm @ n=10,000 ---
+[rbf_svm fit] 7.47s
+[rbf_svm predict] 13.02s
+  ROC-AUC=0.7262  train=7.47s
+
+--- rbf_svm @ n=20,000 ---
+[rbf_svm fit] 30.06s
+[rbf_svm predict] 24.85s
+  ROC-AUC=0.7402  train=30.06s
+
+--- rbf_svm @ n=40,000 ---
+[rbf_svm fit] 126.71s
+[rbf_svm predict] 49.28s
+  ROC-AUC=0.7512  train=126.71s
+
+[skip] rbf_svm @ n=80,000 (above RBF cap 40,000)
+
+[skip] rbf_svm @ n=160,000 (above RBF cap 40,000)
+
+--- knn @ n=1,000 ---
+[knn fit] 0.00s
+[knn predict] 0.18s
+  ROC-AUC=0.6029  train=0.00s
+
+--- knn @ n=2,000 ---
+[knn fit] 0.00s
+[knn predict] 0.12s
+  ROC-AUC=0.6177  train=0.00s
+
+--- knn @ n=5,000 ---
+[knn fit] 0.00s
+[knn predict] 0.20s
+  ROC-AUC=0.6462  train=0.00s
+
+--- knn @ n=10,000 ---
+[knn fit] 0.00s
+[knn predict] 0.34s
+  ROC-AUC=0.6585  train=0.00s
+
+--- knn @ n=20,000 ---
+[knn fit] 0.00s
+[knn predict] 0.59s
+  ROC-AUC=0.6734  train=0.00s
+
+--- knn @ n=40,000 ---
+[knn fit] 0.00s
+[knn predict] 1.12s
+  ROC-AUC=0.6871  train=0.00s
+
+--- knn @ n=80,000 ---
+[knn fit] 0.00s
+[knn predict] 2.24s
+  ROC-AUC=0.7022  train=0.00s
+
+--- knn @ n=160,000 ---
+[knn fit] 0.00s
+[knn predict] 4.47s
+  ROC-AUC=0.7155  train=0.00s
+
+--- decision_tree @ n=1,000 ---
+[decision_tree fit] 0.01s
+[decision_tree predict] 0.00s
+  ROC-AUC=0.6560  train=0.01s
+
+--- decision_tree @ n=2,000 ---
+[decision_tree fit] 0.01s
+[decision_tree predict] 0.00s
+  ROC-AUC=0.6849  train=0.01s
+
+--- decision_tree @ n=5,000 ---
+[decision_tree fit] 0.05s
+[decision_tree predict] 0.00s
+  ROC-AUC=0.7031  train=0.05s
+
+--- decision_tree @ n=10,000 ---
+[decision_tree fit] 0.12s
+[decision_tree predict] 0.00s
+  ROC-AUC=0.7251  train=0.12s
+
+--- decision_tree @ n=20,000 ---
+[decision_tree fit] 0.25s
+[decision_tree predict] 0.00s
+  ROC-AUC=0.7337  train=0.25s
+
+--- decision_tree @ n=40,000 ---
+[decision_tree fit] 0.57s
+[decision_tree predict] 0.00s
+  ROC-AUC=0.7420  train=0.57s
+
+--- decision_tree @ n=80,000 ---
+[decision_tree fit] 1.22s
+[decision_tree predict] 0.00s
+  ROC-AUC=0.7513  train=1.22s
+
+--- decision_tree @ n=160,000 ---
+[decision_tree fit] 2.62s
+[decision_tree predict] 0.01s
+  ROC-AUC=0.7634  train=2.62s
+
+--- random_forest @ n=1,000 ---
+[random_forest fit] 0.18s
+[random_forest predict] 0.10s
+  ROC-AUC=0.7317  train=0.18s
+
+--- random_forest @ n=2,000 ---
+[random_forest fit] 0.15s
+[random_forest predict] 0.11s
+  ROC-AUC=0.7471  train=0.15s
+
+--- random_forest @ n=5,000 ---
+[random_forest fit] 0.26s
+[random_forest predict] 0.13s
+  ROC-AUC=0.7664  train=0.26s
+
+--- random_forest @ n=10,000 ---
+[random_forest fit] 0.51s
+[random_forest predict] 0.15s
+  ROC-AUC=0.7749  train=0.51s
+
+--- random_forest @ n=20,000 ---
+[random_forest fit] 1.15s
+[random_forest predict] 0.17s
+  ROC-AUC=0.7852  train=1.15s
+
+--- random_forest @ n=40,000 ---
+[random_forest fit] 2.56s
+[random_forest predict] 0.20s
+  ROC-AUC=0.7938  train=2.56s
+
+--- random_forest @ n=80,000 ---
+[random_forest fit] 6.05s
+[random_forest predict] 0.25s
+  ROC-AUC=0.7999  train=6.05s
+
+--- random_forest @ n=160,000 ---
+[random_forest fit] 13.71s
+[random_forest predict] 0.31s
+  ROC-AUC=0.8052  train=13.71s
+
+--- xgboost @ n=1,000 ---
+[xgboost fit] 0.68s
+[xgboost predict] 0.06s
+  ROC-AUC=0.7312  train=0.68s
+
+--- xgboost @ n=2,000 ---
+[xgboost fit] 0.74s
+[xgboost predict] 0.06s
+  ROC-AUC=0.7383  train=0.74s
+
+--- xgboost @ n=5,000 ---
+[xgboost fit] 0.88s
+[xgboost predict] 0.05s
+  ROC-AUC=0.7619  train=0.88s
+
+--- xgboost @ n=10,000 ---
+[xgboost fit] 0.98s
+[xgboost predict] 0.05s
+  ROC-AUC=0.7799  train=0.98s
+
+--- xgboost @ n=20,000 ---
+[xgboost fit] 1.12s
+[xgboost predict] 0.05s
+  ROC-AUC=0.7917  train=1.12s
+
+--- xgboost @ n=40,000 ---
+[xgboost fit] 1.33s
+[xgboost predict] 0.05s
+  ROC-AUC=0.8024  train=1.33s
+
+--- xgboost @ n=80,000 ---
+[xgboost fit] 1.61s
+[xgboost predict] 0.05s
+  ROC-AUC=0.8094  train=1.61s
+
+--- xgboost @ n=160,000 ---
+[xgboost fit] 2.17s
+[xgboost predict] 0.05s
+  ROC-AUC=0.8175  train=2.17s
+
+Wrote /Users/chaz/Desktop/CS4630Group1Project3/outputs/scalability.csv
+=== 2026-04-23 23:18:07: DONE step5 ===
+=== 2026-04-23 23:18:07: START step6 plots ===
+wrote /Users/chaz/Desktop/CS4630Group1Project3/figures/scalability_train_time.png
+wrote /Users/chaz/Desktop/CS4630Group1Project3/figures/scalability_inference_time.png
+wrote /Users/chaz/Desktop/CS4630Group1Project3/figures/scalability_roc_auc.png
+=== 2026-04-23 23:18:09: DONE step6 ===
+=== 2026-04-23 23:18:09: ALL DONE ===
