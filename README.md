@@ -37,7 +37,7 @@ data/
 CS4630Group1Project3/
 ├── data/                        # Raw + Project 2 artifacts
 ├── src/                         # Pipeline source code
-├── splits/                      # Train/test splits
+├── splits/                      # Train/test splits (generated, not committed)
 ├── outputs/                     # Metrics CSVs
 ├── figures/                     # Plots for the report
 ├── .gitignore
