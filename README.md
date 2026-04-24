@@ -35,12 +35,11 @@ data/
 
 ```
 CS4630Group1Project3/
-├── data/                        # Raw + Project 2 artifacts (not committed)
+├── data/                        # Raw + Project 2 artifacts
 ├── src/                         # Pipeline source code
 ├── splits/                      # Train/test splits (generated, not committed)
 ├── outputs/                     # Metrics CSVs
 ├── figures/                     # Plots for the report
-├── report/                      # Report drafts and final PDF
 ├── .gitignore
 ├── requirements.txt
 └── README.md
@@ -72,9 +71,6 @@ pip install -r requirements.txt
 
 ## How to Run the Pipeline
 
-_Pipeline scripts will be added to `src/` as they are implemented._
-
----
 
 ## Team
 
