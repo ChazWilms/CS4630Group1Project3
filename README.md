@@ -20,7 +20,7 @@ The raw data is not stored in this repository due to file size. Download from:
 
 Once downloaded, place the files in the repository as follows:
 
-```
+```text
 data/
 ├── HIGGS.csv.gz          # Raw compressed dataset (11M rows, 28 features)
 ├── X_scaled.csv          # Scaled 200k subsample (from Project 2)
@@ -33,7 +33,7 @@ data/
 
 ## Repository Structure
 
-```
+```text
 CS4630Group1Project3/
 ├── data/                        # Raw + Project 2 artifacts
 ├── src/                         # Pipeline source code
@@ -71,14 +71,92 @@ pip install -r requirements.txt
 
 ## How to Run the Pipeline
 
+Run each step in order from the `src/` directory. All outputs are written to `outputs/` and `figures/`.
+
+```bash
+cd src
+```
+
+### Step 0 — Preprocess the raw data
+
+```bash
+python step0_preprocess.py
+```
+
+Reads `data/HIGGS.csv.gz`, subsamples 200k rows (stratified), scales features, and writes `data/X_scaled.csv`, `data/X_unscaled.csv`, and `data/y.csv`.
+
+### Step 1 — Prepare train/test splits
+
+```bash
+python step1_prepare_splits.py
+```
+
+Performs a stratified split and saves NumPy arrays to `splits/` for each feature variant (raw, PCA-10, cluster-augmented).
+
+### Step 2 — Train classifiers
+
+Run all three scripts; each writes its own results CSV.
+
+```bash
+python step2a_train_raw.py       # 6 models on raw 28 features
+python step2b_train_pca.py       # 6 models on PCA-10 features
+python step2c_train_clusters.py  # 6 models on raw + cluster-ID feature
+```
+
+Each script runs GridSearchCV (3-fold CV) then re-fits with the best params on the full training set. Results are written to `outputs/results_raw.csv`, `outputs/results_pca.csv`, and `outputs/results_clusters.csv`.
+
+> **Note on RBF-SVM:** The grid search runs on a 20k subsample due to quadratic complexity. To train on the full 160k using pre-selected params, run `step2e_rbf_full.py` after the above.
+
+### Step 3 — Combine results
+
+```bash
+python step3_evaluate.py
+```
+
+Merges the three results CSVs into `outputs/final_comparison.csv` and prints an ROC-AUC pivot table.
+
+### Step 4 — Generate comparison plots
+
+```bash
+python step4_visualize.py
+```
+
+Writes six bar-chart PNGs to `figures/` (accuracy, F1, ROC-AUC, PR-AUC, train time, inference time).
+
+### Step 5 — Scalability experiment
+
+```bash
+python step5_scalability.py
+```
+
+Re-trains each model at training sizes 1k–160k using best hyperparameters from Step 2. Writes `outputs/scalability.csv`.
+
+### Step 6 — Plot scalability curves
+
+```bash
+python step6_plot_scalability.py
+```
+
+Writes `figures/scalability_train_time.png`, `figures/scalability_inference_time.png`, and `figures/scalability_roc_auc.png`.
+
+---
+
+### Quick full run (Linux/macOS)
+
+```bash
+bash src/run_overnight.sh      # Steps 0–4 end-to-end
+bash src/run_scalability.sh    # Steps 5–6
+```
+
+---
 
 ## Team
 
 | Member | Role |
-|---|---|
-| Chaz Wilms | TBD |
-| Vaughn Gugger | TBD |
-| Quang Minh Nguyen | TBD |
-| Rachel Stevenson | TBD |
-| Jack Handley | TBD |
-| Isaac Avila | TBD |
+| --- | --- |
+| Chaz Wilms | Code, slides |
+| Vaughn Gugger | Code, slides |
+| Quang Minh Nguyen | Code, report, slides |
+| Rachel Stevenson | Code, report, slides |
+| Jack Handley | Code, slides |
+| Isaac Avila | Code, slides |
