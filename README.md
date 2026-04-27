@@ -154,9 +154,9 @@ bash src/run_scalability.sh    # Steps 5–6
 
 | Member | Role |
 | --- | --- |
-| Chaz Wilms | Code, slides |
-| Vaughn Gugger | Code, slides |
-| Quang Minh Nguyen | Code, report, slides |
-| Rachel Stevenson | Code, report, slides |
-| Jack Handley | Code, slides |
-| Isaac Avila | Code, slides |
+| Chaz Wilms | Code, report |
+| Vaughn Gugger | Code, report, slides |
+| Quang Minh Nguyen | Slides |
+| Rachel Stevenson | Report |
+| Jack Handley | Slides |
+| Isaac Avila | Research, report |
